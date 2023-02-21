@@ -3,14 +3,14 @@ import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
 import PopupWithForm from './PopupWithForm';
-import React from 'react';
+import {useState} from 'react';
 
 function App() {
 
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState();
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState();
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState();
-  const [selectedCard, setSelectedCard] = React.useState({ name: '', link: '' });
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState();
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState();
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState();
+  const [selectedCard, setSelectedCard] = useState({ name: '', link: '' });
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);

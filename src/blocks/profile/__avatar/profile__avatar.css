@@ -5,9 +5,7 @@
   width: 120px;
   height: 120px;
   margin-right: 30px;
-  cursor: pointer;
   position: relative;
-  background-image: url('../../../images/avatar.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,25 +18,3 @@
   }
 }
 
-.profile__avatar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: #000;
-  z-index: 1;
-  transition: opacity 0.2s ease-out;
-  background-image: url('../../../images/Edite_Icon.svg');
-  background-size: 18%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-position-x: 47px;
-
-}
-
-.profile__avatar:hover::before {
-  opacity: 0.8;
-}

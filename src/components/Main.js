@@ -1,30 +1,20 @@
-import React from 'react';
-import { api } from './utils/Api'
+import {useEffect, useState} from 'react';
+import { api } from '../utils/Api'
 import Card from './Card'
 
 function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
 
-  const [userName, setUserName] = React.useState();
-  const [userDescription, setUserDescription] = React.useState();
-  const [userAvatar, setUserAvatar] = React.useState();
-  const [cards, setCards] = React.useState([]);
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
+  const [cards, setCards] = useState([]);
 
-  React.useEffect(() => {
-    api.getUserInfo()
-      .then((userData) => {
+  useEffect(() => {
+    api.getAllNeededData()
+      .then(([userData, initialCards]) => {
         setUserName(userData.name);
         setUserDescription(userData.about);
         setUserAvatar(userData.avatar);
-      })
-      .catch((err) => {
-        console.log(`Произошла ошибка ${err}`);
-      });
-
-  }, []);
-
-  React.useEffect(() => {
-    api.getCardsFromApi()
-      .then((initialCards) => {
         setCards(initialCards);
       })
       .catch((err) => {
@@ -33,12 +23,11 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
 
   }, []);
 
-
   return (
     <main className="content">
       <section className="profile page__section">
         <div className="profile__wrapper" onClick={onEditAvatar} >
-          <img className="profile__avatar" src="" alt="" style={{ backgroundImage: `url(${userAvatar})` }} />
+          <img className="profile__avatar" src={`${userAvatar}`} alt="" />
         </div>
         <div className="profile__info">
           <div className="profile__name-wrapper">
