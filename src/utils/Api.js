@@ -11,7 +11,7 @@ class Api {
     })
       .then((res) => {
         return this._checkState(res)
-    })
+      })
   };
 
   getCardsFromApi() {
@@ -21,7 +21,7 @@ class Api {
     })
       .then((res) => {
         return this._checkState(res)
-    })
+      })
   };
 
   getAllNeededData() {
@@ -36,7 +36,7 @@ class Api {
     })
       .then((res) => {
         return this._checkState(res)
-    })
+      })
   };
 
   addCards(data) {
@@ -47,7 +47,7 @@ class Api {
     })
       .then((res) => {
         return this._checkState(res)
-    })
+      })
   };
 
   deleteCard(cardId) {
@@ -57,27 +57,27 @@ class Api {
     })
       .then((res) => {
         return this._checkState(res)
-    })
+      })
   };
 
-  addLikeCard(cardId) {
-    return fetch(`${this._url}cards/${cardId}/likes`, {
-      method: 'PUT',
-      headers: this._headers
-    })
-      .then((res) => {
-        return this._checkState(res)
-    })
-  };
-
-  deleteLikeCard(cardId) {
-    return fetch(`${this._url}cards/${cardId}/likes`, {
-      method: 'DELETE',
-      headers: this._headers
-    })
-      .then((res) => {
-        return this._checkState(res)
-    })
+  changeLikeCardStatus(cardId, isUnLiked) {
+    if (isUnLiked) {
+      return fetch(`${this._url}cards/${cardId}/likes`, {
+        method: 'PUT',
+        headers: this._headers
+      })
+        .then((res) => {
+          return this._checkState(res)
+        })
+    } else {
+      return fetch(`${this._url}cards/${cardId}/likes`, {
+        method: 'DELETE',
+        headers: this._headers
+      })
+        .then((res) => {
+          return this._checkState(res)
+        })
+    }
   };
 
   updateProfileAvatar(data) {
@@ -88,7 +88,7 @@ class Api {
     })
       .then((res) => {
         return this._checkState(res)
-    })
+      })
   };
 
   _checkState(result) {
