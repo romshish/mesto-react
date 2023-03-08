@@ -31,7 +31,6 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
           ))}
         </ul>
       </section>
-
     </main>
   );
 }

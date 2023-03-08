@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm';
 import React from 'react';
 
@@ -13,6 +13,10 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     });
   }
 
+  useEffect(() => {
+    avatarRef.current.value = '';
+  }, [isOpen]);
+
   return (
     <PopupWithForm name={'update-avatar'} title={'Обновить аватар'} submitTitle={'Сохранить'} isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit}>
       <label className="popup__input-field">
@@ -23,6 +27,5 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     </PopupWithForm>
   )
 }
-
 
 export default EditAvatarPopup;
